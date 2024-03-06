@@ -1,0 +1,810 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("Work Order Detail")
+gui.SS_Form1..size(6160,5525)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,ss_form1_unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_dtpStart.create(label,"Start Date",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpStart.create(datepicker)
+gui.SS_Form1.dtpStart.visible(True)
+gui.SS_Form1.dtpStart.size(1800,345)
+gui.SS_Form1.dtpStart.zorder(0)
+gui.SS_Form1.dtpStart.position(100,335)
+gui.SS_Form1.dtpStart.enabled(True)
+gui.SS_Form1.dtpStart.checkbox(False)
+gui.SS_Form1.lbl_dtpStop.create(label,"Stop Date",True,1800,200,1,1985,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.dtpStop.create(datepicker)
+gui.SS_Form1.dtpStop.visible(True)
+gui.SS_Form1.dtpStop.size(1800,345)
+gui.SS_Form1.dtpStop.zorder(0)
+gui.SS_Form1.dtpStop.position(1985,335)
+gui.SS_Form1.dtpStop.enabled(True)
+gui.SS_Form1.dtpStop.checkbox(False)
+gui.SS_Form1.lbl_txtBegWO.create(label,"Beginning Work Order",True,1800,200,1,100,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtBegWO.create(textbox,"",True,1800,330,0,100,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.cmd_txtBegWO.create(button)
+gui.SS_Form1.cmd_txtBegWO.caption("^")
+gui.SS_Form1.cmd_txtBegWO.visible(True)
+gui.SS_Form1.cmd_txtBegWO.size(330,330)
+gui.SS_Form1.cmd_txtBegWO.zorder(0)
+gui.SS_Form1.cmd_txtBegWO.position(1985,1050)
+gui.SS_Form1.cmd_txtBegWO.enabled(True)
+gui.SS_Form1.cmd_txtBegWO.fontname("Arial")
+gui.SS_Form1.cmd_txtBegWO.fontsize(8)
+gui.SS_Form1.cmd_txtBegWO.event(click,cmd_txtbegwo_click)
+gui.SS_Form1.lbl_txtEndWO.create(label,"Ending Work Order",True,1800,200,1,2455,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.txtEndWO.create(textbox,"",True,1800,330,0,2455,1050,True,0,Arial,8,16777215,1)
+gui.SS_Form1.cmd_txtEndWO.create(button)
+gui.SS_Form1.cmd_txtEndWO.caption("^")
+gui.SS_Form1.cmd_txtEndWO.visible(True)
+gui.SS_Form1.cmd_txtEndWO.size(330,330)
+gui.SS_Form1.cmd_txtEndWO.zorder(0)
+gui.SS_Form1.cmd_txtEndWO.position(4340,1050)
+gui.SS_Form1.cmd_txtEndWO.enabled(True)
+gui.SS_Form1.cmd_txtEndWO.fontname("Arial")
+gui.SS_Form1.cmd_txtEndWO.fontsize(8)
+gui.SS_Form1.cmd_txtEndWO.event(click,cmd_txtendwo_click)
+gui.SS_Form1.chkAll.create(checkbox)
+gui.SS_Form1.chkAll.caption("All Work Orders")
+gui.SS_Form1.chkAll.visible(True)
+gui.SS_Form1.chkAll.size(1800,300)
+gui.SS_Form1.chkAll.zorder(0)
+gui.SS_Form1.chkAll.position(100,1550)
+gui.SS_Form1.chkAll.enabled(True)
+gui.SS_Form1.chkAll.alignment(0)
+gui.SS_Form1.chkAll.fontname("Arial")
+gui.SS_Form1.chkAll.fontsize(8)
+gui.SS_Form1.lvwWO.create(listview)
+gui.SS_Form1.lvwWO.view(3)
+gui.SS_Form1.lvwWO.addlistviewcolumn("Beginning Work Order",2705,0)
+gui.SS_Form1.lvwWO.addlistviewcolumn("Ending Work Order",2705,0)
+gui.SS_Form1.lvwWO.visible(True)
+gui.SS_Form1.lvwWO.size(5810,2000)
+gui.SS_Form1.lvwWO.zorder(0)
+gui.SS_Form1.lvwWO.position(100,1935)
+gui.SS_Form1.lvwWO.enabled(True)
+gui.SS_Form1.lvwWO.fontname("Arial")
+gui.SS_Form1.lvwWO.fontsize(8)
+gui.SS_Form1.cmd_lvwWOAdd.create(button)
+gui.SS_Form1.cmd_lvwWOAdd.caption("Add")
+gui.SS_Form1.cmd_lvwWOAdd.visible(True)
+gui.SS_Form1.cmd_lvwWOAdd.size(1000,330)
+gui.SS_Form1.cmd_lvwWOAdd.zorder(0)
+gui.SS_Form1.cmd_lvwWOAdd.position(4810,1050)
+gui.SS_Form1.cmd_lvwWOAdd.enabled(True)
+gui.SS_Form1.cmd_lvwWOAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvwWOAdd.fontsize(8)
+gui.SS_Form1.cmd_lvwWOAdd.event(click,cmd_lvwwoadd_click)
+gui.SS_Form1.cmd_lvwWODelete.create(button)
+gui.SS_Form1.cmd_lvwWODelete.caption("Delete")
+gui.SS_Form1.cmd_lvwWODelete.visible(True)
+gui.SS_Form1.cmd_lvwWODelete.size(1000,330)
+gui.SS_Form1.cmd_lvwWODelete.zorder(0)
+gui.SS_Form1.cmd_lvwWODelete.position(100,4020)
+gui.SS_Form1.cmd_lvwWODelete.enabled(True)
+gui.SS_Form1.cmd_lvwWODelete.fontname("Arial")
+gui.SS_Form1.cmd_lvwWODelete.fontsize(8)
+gui.SS_Form1.cmd_lvwWODelete.event(click,cmd_lvwwodelete_click)
+gui.SS_Form1.cmd_lvwWOClear.create(button)
+gui.SS_Form1.cmd_lvwWOClear.caption("Clear")
+gui.SS_Form1.cmd_lvwWOClear.visible(True)
+gui.SS_Form1.cmd_lvwWOClear.size(1000,330)
+gui.SS_Form1.cmd_lvwWOClear.zorder(0)
+gui.SS_Form1.cmd_lvwWOClear.position(1185,4020)
+gui.SS_Form1.cmd_lvwWOClear.enabled(True)
+gui.SS_Form1.cmd_lvwWOClear.fontname("Arial")
+gui.SS_Form1.cmd_lvwWOClear.fontsize(8)
+gui.SS_Form1.cmd_lvwWOClear.event(click,cmd_lvwwoclear_click)
+gui.SS_Form1.cmdPrint.create(button)
+gui.SS_Form1.cmdPrint.caption("Print")
+gui.SS_Form1.cmdPrint.visible(True)
+gui.SS_Form1.cmdPrint.size(1000,360)
+gui.SS_Form1.cmdPrint.zorder(0)
+gui.SS_Form1.cmdPrint.position(100,4550)
+gui.SS_Form1.cmdPrint.enabled(True)
+gui.SS_Form1.cmdPrint.fontname("Arial")
+gui.SS_Form1.cmdPrint.fontsize(8)
+gui.SS_Form1.cmdPrint.event(click,cmdprint_click)
+gui.SS_Form1.dtpStart.tabstop(true)
+gui.SS_Form1.dtpStart.tabindex(1)
+gui.SS_Form1.dtpStop.tabstop(true)
+gui.SS_Form1.dtpStop.tabindex(2)
+gui.SS_Form1.txtBegWO.tabstop(true)
+gui.SS_Form1.txtBegWO.tabindex(3)
+gui.SS_Form1.cmd_txtBegWO.tabstop(true)
+gui.SS_Form1.cmd_txtBegWO.tabindex(4)
+gui.SS_Form1.txtEndWO.tabstop(true)
+gui.SS_Form1.txtEndWO.tabindex(5)
+gui.SS_Form1.cmd_txtEndWO.tabstop(true)
+gui.SS_Form1.cmd_txtEndWO.tabindex(6)
+gui.SS_Form1.cmd_lvwWOAdd.tabstop(true)
+gui.SS_Form1.cmd_lvwWOAdd.tabindex(7)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.iKey.Declare(Long,-1)
+Variable.UDT.uJob.Define("Terminal",String)
+Variable.UDT.uJob.Define("Job",String)
+Variable.UDT.uJob.Define("Part",String)
+Variable.UDT.uJob.Define("Description",String)
+Variable.UDT.uJob.Define("Customer",String)
+Variable.UDT.uJob.Define("CustomerPO",String)
+Variable.UDT.uJob.Define("CustomerDraw",String)
+Variable.UDT.uJob.Define("Location",String)
+Variable.UDT.uJob.Define("Sort",String)
+Variable.UDT.uJob.Define("UntiPrice",Float)
+Variable.UDT.uJob.Define("OrderDueDate",Date)
+Variable.UDT.uJob.Define("DueDate",Date)
+Variable.UDT.uJob.Define("CompletedDate",Date)
+Variable.UDT.uJob.Define("Quantity",Float)
+Variable.UDT.uJob.Define("CompleteQty",Float)
+Variable.uGlobal.uJob.Declare("uJob")
+Variable.Global.sSearchList.Declare(String)
+Variable.UDT.uLabor.Define("Job",String)
+Variable.UDT.uLabor.Define("WC1Name",String)
+Variable.UDT.uLabor.Define("WC1Hours",Float)
+Variable.UDT.uLabor.Define("WC1Labor",Float)
+Variable.UDT.uLabor.Define("WC1OH",Float)
+Variable.UDT.uLabor.Define("WC2Name",String)
+Variable.UDT.uLabor.Define("WC2Hours",Float)
+Variable.UDT.uLabor.Define("WC2Labor",Float)
+Variable.UDT.uLabor.Define("WC2OH",Float)
+Variable.UDT.uLabor.Define("WC3Name",String)
+Variable.UDT.uLabor.Define("WC3Hours",Float)
+Variable.UDT.uLabor.Define("WC3Labor",Float)
+Variable.UDT.uLabor.Define("WC3OH",Float)
+Variable.UDT.uLabor.Define("WC4Name",String)
+Variable.UDT.uLabor.Define("WC4Hours",Float)
+Variable.UDT.uLabor.Define("WC4Labor",Float)
+Variable.UDT.uLabor.Define("WC4OH",Float)
+Variable.UDT.uLabor.Define("WC5Name",String)
+Variable.UDT.uLabor.Define("WC5Hours",Float)
+Variable.UDT.uLabor.Define("WC5Labor",Float)
+Variable.UDT.uLabor.Define("WC5OH",Float)
+Variable.UDT.uLabor.Define("WC6Name",String)
+Variable.UDT.uLabor.Define("WC6Hours",Float)
+Variable.UDT.uLabor.Define("WC6Labor",Float)
+Variable.UDT.uLabor.Define("WC6OH",Float)
+Variable.UDT.uLabor.Define("WC7Name",String)
+Variable.UDT.uLabor.Define("WC7Hours",Float)
+Variable.UDT.uLabor.Define("WC7Labor",Float)
+Variable.UDT.uLabor.Define("WC7OH",Float)
+Variable.UDT.uLabor.Define("WC8Name",String)
+Variable.UDT.uLabor.Define("WC8Hours",Float)
+Variable.UDT.uLabor.Define("WC8Labor",Float)
+Variable.UDT.uLabor.Define("WC8OH",Float)
+Variable.UDT.uLabor.Define("WC9Name",String)
+Variable.UDT.uLabor.Define("WC9Hours",Float)
+Variable.UDT.uLabor.Define("WC9Labor",Float)
+Variable.UDT.uLabor.Define("WC9OH",Float)
+Variable.UDT.uLabor.Define("WC10Name",String)
+Variable.UDT.uLabor.Define("WC10Hours",Float)
+Variable.UDT.uLabor.Define("WC10Labor",Float)
+Variable.UDT.uLabor.Define("WC10OH",Float)
+Variable.UDT.uLabor.Define("WC11Name",String)
+Variable.UDT.uLabor.Define("WC11Hours",Float)
+Variable.UDT.uLabor.Define("WC11Labor",Float)
+Variable.UDT.uLabor.Define("WC11OH",Float)
+Variable.UDT.uLabor.Define("WC12Name",String)
+Variable.UDT.uLabor.Define("WC12Hours",Float)
+Variable.UDT.uLabor.Define("WC12Labor",Float)
+Variable.UDT.uLabor.Define("WC12OH",Float)
+Variable.UDT.uLabor.Define("WC13Name",String)
+Variable.UDT.uLabor.Define("WC13Hours",Float)
+Variable.UDT.uLabor.Define("WC13Labor",Float)
+Variable.UDT.uLabor.Define("WC13OH",Float)
+Variable.UDT.uLabor.Define("WC14Name",String)
+Variable.UDT.uLabor.Define("WC14Hours",Float)
+Variable.UDT.uLabor.Define("WC14Labor",Float)
+Variable.UDT.uLabor.Define("WC14OH",Float)
+Variable.UDT.uLabor.Define("WC15Name",String)
+Variable.UDT.uLabor.Define("WC15Hours",Float)
+Variable.UDT.uLabor.Define("WC15Labor",Float)
+Variable.UDT.uLabor.Define("WC15OH",Float)
+Variable.UDT.uLabor.Define("WC16Name",String)
+Variable.UDT.uLabor.Define("WC16Hours",Float)
+Variable.UDT.uLabor.Define("WC16Labor",Float)
+Variable.UDT.uLabor.Define("WC16OH",Float)
+Variable.UDT.uLabor.Define("WC17Name",String)
+Variable.UDT.uLabor.Define("WC17Hours",Float)
+Variable.UDT.uLabor.Define("WC17Labor",Float)
+Variable.UDT.uLabor.Define("WC17OH",Float)
+Variable.UDT.uLabor.Define("Terminal",String)
+Variable.uGlobal.uLabor.Declare("uLabor")
+Variable.UDT.uWC.Define("WC",String)
+Variable.UDT.uWC.Define("WCLabor",Float)
+Variable.UDT.uWC.Define("WCOH",Float)
+Variable.UDT.uWC.Define("WCHours",Float)
+Variable.uGlobal.uWC.Declare("uWC")
+Variable.UDT.uMatl.Define("Job",String)
+Variable.UDT.uMatl.Define("Terminal",String)
+Variable.UDT.uMatl.Define("Part",String)
+Variable.UDT.uMatl.Define("Description",String)
+Variable.UDT.uMatl.Define("IssueQty",Float)
+Variable.UDT.uMatl.Define("PO",String)
+Variable.UDT.uMatl.Define("IssueDate",Date)
+Variable.UDT.uMatl.Define("Dollars",Float)
+Variable.uGlobal.uMatl.Declare("uMatl")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass,3500)
+Gui.SS_Form1..Show
+
+Program.Sub.Main.End
+
+program.sub.cmd_txtbegwo_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtbegwo_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.Browser(1000,"",V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtBegWO.Text(V.Local.sRet(0))
+	Gui.SS_Form1.txtEndWO.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtbegwo_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_txtbegwo_click.end
+
+program.sub.cmd_txtendwo_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_txtendwo_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sRet.Declare(String)
+
+F.Intrinsic.UI.Browser(1000,"",V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	Gui.SS_Form1.txtEndWO.Text(V.Local.sRet(0))
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_txtendwo_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_txtendwo_click.end
+
+program.sub.cmd_lvwwoadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwwoadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Math.Add(V.Global.iKey,1,V.Global.iKey)
+Gui.SS_Form1.lvwWO.AddListItem(V.Global.iKey,V.Screen.SS_Form1!txtBegWO.Text)
+Gui.SS_Form1.lvwWO.SetListItemSubItemText(V.Global.iKey,1,V.Screen.SS_Form1!txtEndWO.Text)
+Gui.SS_Form1.txtBegWO.Text("")
+Gui.SS_Form1.txtEndWO.Text("")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwwoadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_lvwwoadd_click.end
+
+program.sub.cmd_lvwwodelete_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwwodelete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iKey.Declare(Long)
+
+V.Local.iKey.Set(V.Screen.SS_Form1!lvwWO.SelectedItemKey)
+Gui.SS_Form1.lvwWO.RemoveItem(V.Local.iKey)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwwodelete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_lvwwodelete_click.end
+
+program.sub.cmd_lvwwoclear_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwwoclear_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+Gui.SS_Form1.lvwWO.ClearItems
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwwoclear_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmd_lvwwoclear_click.end
+
+program.sub.cmdprint_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdprint_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+F.Intrinsic.Control.CallSub(Searchlist)
+F.Intrinsic.Control.If(V.Global.sSearchList,=,"")
+	F.Intrinsic.UI.Msgbox("No jobs found!","No Jobs")
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.CallSub(Loadudt)
+	F.Intrinsic.Control.CallSub(Loadrst)
+	F.Intrinsic.Control.CallSub(Callbi)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdprint_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+program.sub.cmdprint_click.end
+
+program.sub.ss_form1_unload.start
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+program.sub.ss_form1_unload.end
+
+Program.Sub.SearchList.Start
+F.Intrinsic.Control.SetErrorHandler("SearchList_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSearchList.Declare(String)
+V.Local.sJobList.Declare(String)
+V.Local.sJob.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.iOrd.Declare(Long)
+V.Local.sSql.Declare(String)
+
+Gui.SS_Form1..Visible(False)
+F.Intrinsic.Control.If(V.Screen.SS_Form1!chkAll.Value,=,1)
+	'Building list of all jobs
+	V.Local.sSql.Set("Select DISTINCT JOB from V_JOB_HEADER")
+	F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+		F.Intrinsic.Control.If(V.Local.sSearchList,=,"")
+			V.Local.sSearchList.Set(V.ODBC.con!rst.FieldValTrim!JOB)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Concat(V.Local.sSearchList,"*!*",V.ODBC.con!rst.FieldValTrim!JOB,V.Local.sSearchList)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.MoveNext
+	F.Intrinsic.Control.Loop
+	F.Intrinsic.Control.DoEvents
+F.Intrinsic.Control.Else
+	'Building list of just selected jobs
+	Gui.SS_Form1.lvwWO.RetrieveAllListItems(V.Local.sJobList)
+	F.Intrinsic.String.Split(V.Local.sJobList,"*!*",V.Local.sJobList)
+	Gui.SS_Form1.lvwWO.ListitemKeyToOrdinal(V.Local.sJobList(V.Local.i),V.Local.iOrd)
+	V.Local.sJob.Set(V.Screen.SS_Form1!lvwWO.ListItemTextExtended(V.Local.iOrd))
+	F.Intrinsic.String.Split(V.Local.sJob,"*!*",V.Local.sJob)
+	F.Intrinsic.String.Concat("Select DISTINCT JOB from V_JOB_HEADER where JOB >= '",V.Local.sJob(0),"' and JOB <= '",V.Local.sJOB(1),"'",V.Local.sSql)
+	F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+		F.Intrinsic.Control.If(V.Local.sSearchList,=,"")
+			V.Local.sSearchList.Set(V.ODBC.con!rst.FieldValTrim!JOB)
+		F.Intrinsic.Control.Else
+			F.Intrinsic.String.Concat(V.Local.sSearchList,"*!*",V.ODBC.con!rst.FieldValTrim!JOB,V.Local.sSearchList)
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.MoveNext
+	F.Intrinsic.Control.Loop
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+F.Intrinsic.String.Split(V.Local.sSearchList,"*!*",V.Global.sSearchList)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("SearchList_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.SearchList.End
+
+Program.Sub.LoadUDT.Start
+F.Intrinsic.Control.SetErrorHandler("LoadUDT_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.ia.Declare(Long)
+V.Local.sRet.Declare(String)
+V.Local.iUB.Declare(Long)
+V.Local.iUBWC.Declare(Long)
+V.Local.iUBLabor.Declare(Long)
+V.Local.iUBMatl.Declare(Long)
+V.Local.sSql.Declare(String)
+V.Local.dStartDate.Declare(Date)
+V.Local.dStopDate.Declare(Date)
+V.Local.iWC.Declare(Long)
+
+V.uGlobal.uJob.Redim(-1,-1)
+V.Local.iUB.Set(-1)
+V.Local.iUBLabor.Set(-1)
+V.Local.iUBMatl.Set(-1)
+V.Local.dStartDate.Set(V.Screen.SS_Form1!dtpStart.Value)
+V.Local.dStopDate.Set(V.Screen.SS_Form1!dtpStop.Value)
+
+F.Intrinsic.Control.For(V.Local.i,V.Global.sSearchList.LBound,V.Global.sSearchList.UBound,1)
+	V.uGlobal.uWC.Redim(-1,-1)
+	'First get job header information for the record for the highest level suffix of the job
+	F.Intrinsic.String.Concat("Select JOB, SUFFIX, PART, DESCRIPTION, CUSTOMER, CUSTOMER_PO, DRAWING_CUSTOMER, LOCATION, CODE_SORT,AMT_PRICE_PER_UNIT, DATE_DUE, DATE_CLOSED, QTY_ORDER, QTY_COMPLETED from V_JOB_HEADER where JOB = '",V.Global.sSearchList(V.Local.i),"' ORDER BY JOB, SUFFIX ",V.Local.sSql)
+	F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSql)
+	F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+		F.Intrinsic.Variable.UDTSeek(V.uGlobal.uJob!Job,V.Global.sSearchList(V.Local.i),0,V.Local.sRet)
+		F.Intrinsic.Control.If(V.Local.sRet,=,"")
+			F.Intrinsic.Control.If(V.uGlobal.uJob.UBound,=,-1)
+				V.uGlobal.uJob.Redim(0,0)
+			F.Intrinsic.Control.EndIf
+			F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+			V.uGlobal.uJob.RedimPreserve(0,V.Local.iUB)
+			V.uGlobal.uJob(V.Local.iUB)!Terminal.Set(V.Caller.Terminal)
+			V.uGlobal.uJob(V.Local.iUB)!Job.Set(V.ODBC.con!rst.FieldValTrim!JOB)
+			V.uGlobal.uJob(V.Local.iUB)!Part.Set(V.ODBC.con!rst.FieldValTrim!PART)
+			V.uGlobal.uJob(V.Local.iUB)!Description.Set(V.ODBC.con!rst.FieldValTrim!DESCRIPTION)
+			V.uGlobal.uJob(V.Local.iUB)!Customer.Set(V.ODBC.con!rst.FieldValTrim!CUSTOMER)
+			V.uGlobal.uJob(V.Local.iUB)!CustomerPO.Set(V.ODBC.con!rst.FieldValTrim!CUSTOMER_PO)
+			V.uGlobal.uJob(V.Local.iUB)!CustomerDraw.Set(V.ODBC.con!rst.FieldValTrim!DRAWING_CUSTOMER)
+			V.uGlobal.uJob(V.Local.iUB)!Location.Set(V.ODBC.con!rst.FieldValTrim!LOCATION)
+			V.uGlobal.uJob(V.Local.iUB)!Sort.Set(V.ODBC.con!rst.FieldValTrim!CODE_SORT)
+			V.uGlobal.uJob(V.Local.iUB)!UntiPrice.Set(V.ODBC.con!rst.FieldValFloat!AMT_PRICE_PER_UNIT)
+			F.Intrinsic.String.Concat("Select DATE_ORDER_DUE from V_ORDER_TO_WO where JOB = '",V.ODBC.con!rst.FieldValTrim!JOB,"' and SUFFIX = '",V.ODBC.con!rst.FieldValTrim!SUFFIX,"'",V.Local.sSql)
+			F.ODBC.Connection!con.OpenLocalRecordsetRO("rstOrd",V.Local.sSql)
+			F.Intrinsic.Control.If(V.ODBC.con!rstOrd.EOF,=,False)
+				V.uGlobal.uJob(V.Local.iUB)!OrderDueDate.Set(V.ODBC.con!rstOrd.FieldVal!DATE_ORDER_DUE)
+			F.Intrinsic.Control.Else
+				F.Intrinsic.Date.DateSerial(1900,1,1,V.uGlobal.uJob(V.Local.iUB)!OrderDueDate)
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstOrd.Close
+			V.uGlobal.uJob(V.Local.iUB)!DueDate.Set(V.ODBC.con!rst.FieldVal!DATE_DUE)
+			V.uGlobal.uJob(v.Local.iUB)!CompletedDate.Set(V.ODBC.con!rst.FieldVal!DATE_CLOSED)
+			V.uGlobal.uJob(V.Local.iUB)!Quantity.Set(V.ODBC.con!rst.FieldValFloat!QTY_ORDER)
+			V.uGlobal.uJob(V.Local.iUB)!CompleteQty.Set(V.ODBC.con!rst.FieldValFloat!QTY_COMPLETED)
+
+			V.uGlobal.uWC.Redim(-1,-1)
+			V.Local.iUBWC.Set(-1)
+			'Getting job detail records information
+			F.Intrinsic.String.Concat("Select * from V_JOB_DETAIL where LMO in ('L', 'M') and JOB = '",V.Global.sSearchList(V.Local.i).Trim,"' and DATE_SEQUENCE between '",V.Local.dStartDate.PervasiveDate,"' and '",V.Local.dStopDate.PervasiveDate,"' ORDER BY JOB, SUFFIX, SEQ",V.Local.sSql)
+			F.ODBC.Connection!con.OpenLocalRecordsetRO("rstDtl",V.Local.sSql)
+			'If no detail records filling UDT with zeros
+			F.Intrinsic.Control.If(V.ODBC.con!rstDtl.EOF,=,False)
+				'Looping through Detail records then checking to see if Labor or Material
+				V.Local.iUBWC.Set(-1)
+				F.Intrinsic.Control.DoUntil(V.ODBC.con!rstDtl.EOF,=,True)
+					'If labor, building WC UDT array to pool up hours, labor, overhead, doing this for up to 17 workcenters
+					F.Intrinsic.Control.SelectCase(V.ODBC.con!rstDtl.FieldValTrim!LMO)
+					F.Intrinsic.Control.Case("L")
+						F.Intrinsic.Control.If(V.uGlobal.uWC.UBound,=,-1)
+							V.uGlobal.uWC.Redim(0,0)
+							V.uGlobal.uWC!WC.Set(V.ODBC.con!rstDtl.FieldValTrim!MACHINE)
+							V.uGlobal.uWC!WCHours.Set(V.ODBC.con!rstDtl.FieldValFloat!HOURS_WORKED)
+							V.uGlobal.uWC!WCLabor.Set(V.ODBC.con!rstDtl.FieldValFloat!AMOUNT_LABOR)
+							V.uGlobal.uWC!WCOH.Set(V.ODBC.con!rstDtl.FieldValFloat!AMT_OVERHEAD)
+						F.Intrinsic.Control.Else
+							F.Intrinsic.Control.If(V.uGlobal.uWC.UBound,<,17)
+								F.Intrinsic.Variable.UDTSeek(V.uGlobal.uWC!WC,V.ODBC.con!rstDtl.FieldValTrim!MACHINE,0,V.Local.sRet)
+								F.Intrinsic.Control.If(V.Local.sRet,=,"")
+									F.Intrinsic.Math.Add(V.uGlobal.uWC.UBound,1,V.Local.iUBWC)
+									V.uGlobal.uWC.RedimPreserve(0,V.Local.iUBWC)
+									V.uGlobal.uWC(V.Local.iUBWC)!WC.Set(V.ODBC.con!rstDtl.FieldValTrim!MACHINE)
+									F.Intrinsic.Math.Add(V.uGlobal.uWC(V.Local.iUBWC)!WCHours,V.ODBC.con!rstDtl.FieldValFloat!HOURS_WORKED,V.uGlobal.uWC(V.Local.iUBWC)!WCHours)
+									F.Intrinsic.Math.Add(V.uGlobal.uWC(V.Local.iUBWC)!WCLabor,V.ODBC.con!rstDtl.FieldValFloat!AMOUNT_LABOR,V.uGlobal.uWC(V.Local.iUBWC)!WCLabor)
+									F.Intrinsic.Math.Add(V.uGlobal.uWC(V.Local.iUBWC)!WCOH,V.ODBC.con!rstDtl.FieldValFloat!AMT_OVERHEAD,V.uGlobal.uWC(V.Local.iUBWC)!WCOH)
+								F.Intrinsic.Control.Else
+									F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+									V.uGlobal.uWC(V.Local.sRet.Long)!WC.Set(V.ODBC.con!rstDtl.FieldValTrim!MACHINE)
+									F.Intrinsic.Math.Add(V.uGlobal.uWC(V.Local.sRet.Long)!WCHours,V.ODBC.con!rstDtl.FieldValFloat!HOURS_WORKED,V.uGlobal.uWC(V.Local.sRet.Long)!WCHours)
+									F.Intrinsic.Math.Add(V.uGlobal.uWC(V.Local.sRet.Long)!WCLabor,V.ODBC.con!rstDtl.FieldValFloat!AMOUNT_LABOR,V.uGlobal.uWC(V.Local.sRet.Long)!WCLabor)
+									F.Intrinsic.Math.Add(V.uGlobal.uWC(V.Local.sRet.Long)!WCOH,V.ODBC.con!rstDtl.FieldValFloat!AMT_OVERHEAD,V.uGlobal.uWC(V.Local.sRet.Long)!WCOH)
+								F.Intrinsic.Control.EndIf
+							F.Intrinsic.Control.EndIf
+						F.Intrinsic.Control.EndIf
+					F.Intrinsic.Control.Case("M")
+						'Adding material if needed
+						F.Intrinsic.Control.If(V.uGlobal.uMatl.UBound,=,-1)
+							V.uGlobal.uMatl.Redim(0,0)
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.Math.Add(V.Local.iUBMatl,1,V.Local.iUBMatl)
+						V.uGlobal.uMatl.RedimPreserve(0,V.Local.iUBMatl)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Job.Set(V.Global.sSearchList(V.Local.i))
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Part.Set(V.ODBC.con!rstDtl.FieldValTrim!PART)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Description.Set(V.ODBC.con!rstDtl.FieldValTrim!DESCRIPTION)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!IssueQty.Set(V.ODBC.con!rstDtl.FieldValFloat!HOURS_WORKED)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!PO.Set(V.ODBC.con!rstDtl.FieldValTrim!REFERENCE)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!IssueDate.Set(V.ODBC.con!rstDtl.FieldVal!DATE_SEQUENCE)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Dollars.Set(V.ODBC.con!rstDtl.FieldValFloat!AMOUNT_LABOR)
+					F.Intrinsic.Control.Case("O")
+						'Adding material if needed for outside process
+						F.Intrinsic.Control.If(V.uGlobal.uMatl.UBound,=,-1)
+							V.uGlobal.uMatl.Redim(0,0)
+						F.Intrinsic.Control.EndIf
+						F.Intrinsic.Math.Add(V.Local.iUBMatl,1,V.Local.iUBMatl)
+						V.uGlobal.uMatl.RedimPreserve(0,V.Local.iUBMatl)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Job.Set(V.Global.sSearchList(V.Local.i))
+						F.Intrinsic.String.Concat("Select PART, DESCRIPTION from V_JOB_OPERATIONS where JOB = '",V.Global.sSearchList(V.Local.i).Trim,"' and SUFFIX = '",V.ODBC.con!rstDtl.FieldValTrim!SUFFIX,"' and SEQ = '",V.ODBC.con!rstDtl.FieldValTrim!SEQ,"'",V.Local.sSql)
+						F.ODBC.Connection!con.OpenLocalRecordsetRO("rstOper",V.Local.sSql)
+						F.Intrinsic.Control.If(V.ODBC.con!rstOper.EOF,=,True)
+							V.uGlobal.uMatl(V.Local.iUBMatl)!Part.Set(V.ODBC.con!rstDtl.FieldValTrim!PART)
+							V.uGlobal.uMatl(V.Local.iUBMatl)!Description.Set(V.ODBC.con!rstDtl.FieldValTrim!DESCRIPTION)
+						F.Intrinsic.Control.Else
+							V.uGlobal.uMatl(V.Local.iUBMatl)!Part.Set(V.ODBC.con!rstOper.FieldValTrim!PART)
+							V.uGlobal.uMatl(V.Local.iUBMatl)!Description.Set(V.ODBC.con!rstOper.FieldValTrim!DESCRIPTION)
+						F.Intrinsic.Control.EndIf
+						F.ODBC.con!rstOper.Close
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Part.Set(V.ODBC.con!rstDtl.FieldValTrim!PART)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Description.Set(V.ODBC.con!rstDtl.FieldValTrim!DESCRIPTION)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!IssueQty.Set(V.ODBC.con!rstDtl.FieldValFloat!HOURS_WORKED)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!PO.Set(V.ODBC.con!rstDtl.FieldValTrim!REFERENCE)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!IssueDate.Set(V.ODBC.con!rstDtl.FieldVal!DATE_SEQUENCE)
+						V.uGlobal.uMatl(V.Local.iUBMatl)!Dollars.Set(V.ODBC.con!rstDtl.FieldValFloat!AMOUNT_LABOR)
+					F.Intrinsic.Control.EndSelect
+					F.ODBC.con!rstDtl.MoveNext
+				F.Intrinsic.Control.Loop
+				'Checking to see that there were workcenter information found, if so adding to labor UDT.
+				F.Intrinsic.Control.If(V.uGlobal.uWC.UBound,>,-1)
+					F.Intrinsic.Control.If(V.uGlobal.uLabor.UBound,=,-1)
+						V.uGlobal.uLabor.Redim(0,0)
+					F.Intrinsic.Control.EndIf
+					F.Intrinsic.Math.Add(V.Local.iUBLabor,1,V.Local.iUBLabor)
+					V.uGlobal.uLabor.RedimPreserve(0,V.Local.iUBLabor)
+					F.Intrinsic.Control.For(V.Local.iA,V.uGlobal.uWC.LBound,V.uGlobal.uWC.UBound,1)
+						F.Intrinsic.Control.If(V.local.ia,=,V.uGlobal.uWC.UBound)
+							F.Intrinsic.Control.ExitFor(V.Local.ia)
+						F.Intrinsic.Control.EndIf
+						V.uGlobal.uLabor(V.Local.iUBLabor)!Terminal.Set(V.Caller.Terminal)
+						V.uGlobal.uLabor(V.Local.iUBLabor)!Job.Set(V.Global.sSearchList(V.Local.i).Trim)
+						'Adding one to get workcenter number to use when setting labor UDT
+						F.Intrinsic.Math.Add(V.Local.ia,1,V.Local.iWC)
+						V.uGlobal.uLabor(V.Local.iUBLabor)!WC[V.Local.iWC]Name.Set(V.uGlobal.uWC(V.Local.ia)!WC)
+						V.uGlobal.uLabor(V.Local.iUBLabor)!WC[V.Local.iWC]Hours.Set(V.uGlobal.uWC(V.Local.ia)!WCHours)
+						V.uGlobal.uLabor(V.Local.iUBLabor)!WC[V.Local.iWC]Labor.Set(V.uGlobal.uWC(V.Local.ia)!WCLabor)
+						V.uGlobal.uLabor(V.Local.iUBLabor)!WC[V.Local.iWC]OH.Set(V.uGlobal.uWC(V.Local.ia)!WCOH)
+					F.Intrinsic.Control.Next(V.Local.ia)
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.EndIf
+			F.ODBC.con!rstDtl.Close
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.Next(V.Local.i)
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadUDT_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadUDT.End
+
+Program.Sub.LoadRST.Start
+F.Intrinsic.Control.SetErrorHandler("LoadRST_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSql.Declare(String)
+V.Local.i.Declare(Long)
+
+F.Intrinsic.String.Concat("Delete GCG_3259_WO_DTL_JOB where Terminal = '",V.Caller.Terminal,"'",V.Local.sSql)
+F.ODBC.Connection!con.Execute(V.Local.sSql)
+F.Intrinsic.Control.If(V.uGlobal.uJob.UBound,>,-1)
+	V.Local.sSql.Set("Select * From GCG_3259_WO_DTL_JOB")
+	F.ODBC.Connection!con.OpenLocalRecordsetRW("rst",V.Local.sSql)
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uJob.LBound,V.uGlobal.uJob.UBound,1)
+		F.ODBC.con!rst.AddNew
+		F.ODBC.con!rst.Set!Terminal(V.Caller.Terminal)
+		F.ODBC.con!rst.Set!Job(V.uGlobal.uJob(V.Local.i)!Job)
+		F.ODBC.con!rst.Set!Part(V.uGlobal.uJob(V.Local.i)!Part)
+		F.ODBC.con!rst.Set!Description(V.uGlobal.uJob(V.Local.i)!Description)
+		F.ODBC.con!rst.Set!Customer(V.uGlobal.uJob(V.Local.i)!Customer)
+		F.ODBC.con!rst.Set!Customer_PO(V.uGlobal.uJob(V.Local.i)!CustomerPO)
+		F.ODBC.con!rst.Set!Customer_Drawing(V.uGlobal.uJob(V.Local.i)!CustomerDraw)
+		F.ODBC.con!rst.Set!Location(V.uGlobal.uJob(V.Local.i)!Location)
+		F.ODBC.con!rst.Set!Sort(V.uGlobal.uJob(V.Local.i)!Sort)
+		F.ODBC.con!rst.Set!Unit_Price(V.uGlobal.uJob(V.Local.i)!UntiPrice)
+		F.ODBC.con!rst.Set!Order_Due_Date(V.uGlobal.uJob(V.Local.i)!OrderDueDate)
+		F.ODBC.con!rst.Set!Due_Date(V.uGlobal.uJob(V.Local.i)!DueDate)
+		F.ODBC.con!rst.Set!Completed_Date(V.uGlobal.uJob(V.Local.i)!CompletedDate)
+		F.ODBC.con!rst.Set!Quantity(V.uGlobal.uJob(V.Local.i)!Quantity)
+		F.ODBC.con!rst.Set!Completed_Quantity(V.uGlobal.uJob(V.Local.i)!CompleteQty)
+		F.ODBC.con!rst.Update
+	F.Intrinsic.Control.Next(V.Local.i)
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Concat("Delete GCG_3259_WO_DTL_LBR where Terminal = '",V.Caller.Terminal,"'",V.Local.sSql)
+F.ODBC.Connection!con.Execute(V.Local.sSql)
+F.Intrinsic.Control.If(V.uGlobal.uLabor.UBound,>,-1)
+	V.Local.sSql.Set("Select * From GCG_3259_WO_DTL_LBR")
+	F.ODBC.Connection!con.OpenLocalRecordsetRW("rst",V.Local.sSql)
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uLabor.LBound,V.uGlobal.uLabor.UBound,1)
+		F.ODBC.con!rst.AddNew
+			F.ODBC.con!rst.Set!Terminal(V.Caller.Terminal)
+			F.ODBC.con!rst.Set!Job(V.uGlobal.uLabor(V.Local.i)!Job)
+			F.ODBC.con!rst.Set!WC1_Name(V.uGlobal.uLabor(V.Local.i)!WC1Name)
+			F.ODBC.con!rst.Set!WC1_Labor(V.uGlobal.uLabor(V.Local.i)!WC1Labor)
+			F.ODBC.con!rst.Set!WC1_Overhead(V.uGlobal.uLabor(V.Local.i)!WC1OH)
+			F.ODBC.con!rst.Set!WC1_Hours(V.uGlobal.uLabor(V.Local.i)!WC1Hours)
+			F.ODBC.con!rst.Set!WC2_Name(V.uGlobal.uLabor(V.Local.i)!WC2Name)
+			F.ODBC.con!rst.Set!WC2_Labor(V.uGlobal.uLabor(V.Local.i)!WC2Labor)
+			F.ODBC.con!rst.Set!WC2_Overhead(V.uGlobal.uLabor(V.Local.i)!WC2OH)
+			F.ODBC.con!rst.Set!WC2_Hours(V.uGlobal.uLabor(V.Local.i)!WC2Hours)
+			F.ODBC.con!rst.Set!WC3_Name(V.uGlobal.uLabor(V.Local.i)!WC3Name)
+			F.ODBC.con!rst.Set!WC3_Labor(V.uGlobal.uLabor(V.Local.i)!WC3Labor)
+			F.ODBC.con!rst.Set!WC3_Overhead(V.uGlobal.uLabor(V.Local.i)!WC3OH)
+			F.ODBC.con!rst.Set!WC3_Hours(V.uGlobal.uLabor(V.Local.i)!WC3Hours)
+			F.ODBC.con!rst.Set!WC4_Name(V.uGlobal.uLabor(V.Local.i)!WC4Name)
+			F.ODBC.con!rst.Set!WC4_Labor(V.uGlobal.uLabor(V.Local.i)!WC4Labor)
+			F.ODBC.con!rst.Set!WC4_Overhead(V.uGlobal.uLabor(V.Local.i)!WC4OH)
+			F.ODBC.con!rst.Set!WC4_Hours(V.uGlobal.uLabor(V.Local.i)!WC4Hours)
+			F.ODBC.con!rst.Set!WC5_Name(V.uGlobal.uLabor(V.Local.i)!WC5Name)
+			F.ODBC.con!rst.Set!WC5_Labor(V.uGlobal.uLabor(V.Local.i)!WC5Labor)
+			F.ODBC.con!rst.Set!WC5_Overhead(V.uGlobal.uLabor(V.Local.i)!WC5OH)
+			F.ODBC.con!rst.Set!WC5_Hours(V.uGlobal.uLabor(V.Local.i)!WC5Hours)
+			F.ODBC.con!rst.Set!WC6_Name(V.uGlobal.uLabor(V.Local.i)!WC6Name)
+			F.ODBC.con!rst.Set!WC6_Labor(V.uGlobal.uLabor(V.Local.i)!WC6Labor)
+			F.ODBC.con!rst.Set!WC6_Overhead(V.uGlobal.uLabor(V.Local.i)!WC6OH)
+			F.ODBC.con!rst.Set!WC6_Hours(V.uGlobal.uLabor(V.Local.i)!WC6Hours)
+			F.ODBC.con!rst.Set!WC7_Name(V.uGlobal.uLabor(V.Local.i)!WC7Name)
+			F.ODBC.con!rst.Set!WC7_Labor(V.uGlobal.uLabor(V.Local.i)!WC7Labor)
+			F.ODBC.con!rst.Set!WC7_Overhead(V.uGlobal.uLabor(V.Local.i)!WC7OH)
+			F.ODBC.con!rst.Set!WC7_Hours(V.uGlobal.uLabor(V.Local.i)!WC7Hours)
+			F.ODBC.con!rst.Set!WC8_Name(V.uGlobal.uLabor(V.Local.i)!WC8Name)
+			F.ODBC.con!rst.Set!WC8_Labor(V.uGlobal.uLabor(V.Local.i)!WC8Labor)
+			F.ODBC.con!rst.Set!WC8_Overhead(V.uGlobal.uLabor(V.Local.i)!WC8OH)
+			F.ODBC.con!rst.Set!WC8_Hours(V.uGlobal.uLabor(V.Local.i)!WC8Hours)
+			F.ODBC.con!rst.Set!WC9_Name(V.uGlobal.uLabor(V.Local.i)!WC9Name)
+			F.ODBC.con!rst.Set!WC9_Labor(V.uGlobal.uLabor(V.Local.i)!WC9Labor)
+			F.ODBC.con!rst.Set!WC9_Overhead(V.uGlobal.uLabor(V.Local.i)!WC9OH)
+			F.ODBC.con!rst.Set!WC9_Hours(V.uGlobal.uLabor(V.Local.i)!WC9Hours)
+			F.ODBC.con!rst.Set!WC10_Name(V.uGlobal.uLabor(V.Local.i)!WC10Name)
+			F.ODBC.con!rst.Set!WC10_Labor(V.uGlobal.uLabor(V.Local.i)!WC10Labor)
+			F.ODBC.con!rst.Set!WC10_Overhead(V.uGlobal.uLabor(V.Local.i)!WC10OH)
+			F.ODBC.con!rst.Set!WC10_Hours(V.uGlobal.uLabor(V.Local.i)!WC10Hours)
+			F.ODBC.con!rst.Set!WC11_Name(V.uGlobal.uLabor(V.Local.i)!WC11Name)
+			F.ODBC.con!rst.Set!WC11_Labor(V.uGlobal.uLabor(V.Local.i)!WC11Labor)
+			F.ODBC.con!rst.Set!WC11_Overhead(V.uGlobal.uLabor(V.Local.i)!WC11OH)
+			F.ODBC.con!rst.Set!WC11_Hours(V.uGlobal.uLabor(V.Local.i)!WC11Hours)
+			F.ODBC.con!rst.Set!WC12_Name(V.uGlobal.uLabor(V.Local.i)!WC12Name)
+			F.ODBC.con!rst.Set!WC12_Labor(V.uGlobal.uLabor(V.Local.i)!WC12Labor)
+			F.ODBC.con!rst.Set!WC12_Overhead(V.uGlobal.uLabor(V.Local.i)!WC12OH)
+			F.ODBC.con!rst.Set!WC12_Hours(V.uGlobal.uLabor(V.Local.i)!WC12Hours)
+			F.ODBC.con!rst.Set!WC13_Name(V.uGlobal.uLabor(V.Local.i)!WC13Name)
+			F.ODBC.con!rst.Set!WC13_Labor(V.uGlobal.uLabor(V.Local.i)!WC13Labor)
+			F.ODBC.con!rst.Set!WC13_Overhead(V.uGlobal.uLabor(V.Local.i)!WC13OH)
+			F.ODBC.con!rst.Set!WC13_Hours(V.uGlobal.uLabor(V.Local.i)!WC13Hours)
+			F.ODBC.con!rst.Set!WC14_Name(V.uGlobal.uLabor(V.Local.i)!WC14Name)
+			F.ODBC.con!rst.Set!WC14_Labor(V.uGlobal.uLabor(V.Local.i)!WC14Labor)
+			F.ODBC.con!rst.Set!WC14_Overhead(V.uGlobal.uLabor(V.Local.i)!WC14OH)
+			F.ODBC.con!rst.Set!WC14_Hours(V.uGlobal.uLabor(V.Local.i)!WC14Hours)
+			F.ODBC.con!rst.Set!WC15_Name(V.uGlobal.uLabor(V.Local.i)!WC15Name)
+			F.ODBC.con!rst.Set!WC15_Labor(V.uGlobal.uLabor(V.Local.i)!WC15Labor)
+			F.ODBC.con!rst.Set!WC15_Overhead(V.uGlobal.uLabor(V.Local.i)!WC15OH)
+			F.ODBC.con!rst.Set!WC15_Hours(V.uGlobal.uLabor(V.Local.i)!WC15Hours)
+			F.ODBC.con!rst.Set!WC16_Name(V.uGlobal.uLabor(V.Local.i)!WC16Name)
+			F.ODBC.con!rst.Set!WC16_Labor(V.uGlobal.uLabor(V.Local.i)!WC16Labor)
+			F.ODBC.con!rst.Set!WC16_Overhead(V.uGlobal.uLabor(V.Local.i)!WC16OH)
+			F.ODBC.con!rst.Set!WC16_Hours(V.uGlobal.uLabor(V.Local.i)!WC16Hours)
+			F.ODBC.con!rst.Set!WC17_Name(V.uGlobal.uLabor(V.Local.i)!WC17Name)
+			F.ODBC.con!rst.Set!WC17_Labor(V.uGlobal.uLabor(V.Local.i)!WC17Labor)
+			F.ODBC.con!rst.Set!WC17_Overhead(V.uGlobal.uLabor(V.Local.i)!WC17OH)
+			F.ODBC.con!rst.Set!WC17_Hours(V.uGlobal.uLabor(V.Local.i)!WC17Hours)
+		F.ODBC.con!rst.Update
+	F.Intrinsic.Control.Next(V.Local.i)
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Concat("Delete GCG_3259_WO_DTL_MTL where Terminal = '",V.Caller.Terminal,"'",V.Local.sSql)
+F.ODBC.Connection!con.Execute(V.Local.sSql)
+F.Intrinsic.Control.If(V.uGlobal.uJob.UBound,>,-1)
+	V.Local.sSql.Set("Select * From GCG_3259_WO_DTL_MTL")
+	F.ODBC.Connection!con.OpenLocalRecordsetRW("rst",V.Local.sSql)
+	F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uMatl.LBound,V.uGlobal.uMatl.UBound,1)
+		F.ODBC.con!rst.AddNew
+		F.ODBC.con!rst.Set!Terminal(V.Caller.Terminal)
+		F.ODBC.con!rst.Set!Job(V.uGlobal.uMatl(V.Local.i)!Job)
+		F.ODBC.con!rst.Set!Part(V.uGlobal.uMatl(V.Local.i)!Part)
+		F.ODBC.con!rst.Set!Description(V.uGlobal.uMatl(V.Local.i)!Description)
+		F.ODBC.con!rst.Set!Purchase_Order(V.uGlobal.uMatl(V.Local.i)!PO)
+		F.ODBC.con!rst.Set!Issue_Quantity(V.uGlobal.uMatl(V.Local.i)!IssueQty)
+		F.ODBC.con!rst.Set!Issue_Date(V.uGlobal.uMatl(V.Local.i)!IssueDate)
+		F.ODBC.con!rst.Set!Dollars(V.uGlobal.uMatl(V.Local.i)!Dollars)
+		F.ODBC.con!rst.Update
+	F.Intrinsic.Control.Next(V.Local.i)
+	F.ODBC.con!rst.Close
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("LoadRST_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.LoadRST.End
+
+Program.Sub.CallBI.Start
+F.Intrinsic.Control.SetErrorHandler("CallBI_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iBI.Declare(Long)
+V.Local.sParam.Declare(String)
+V.Local.sParamVal.Declare(String)
+
+V.Local.sParam.Set("Terminal")
+V.Local.sParamVal.Set(V.Caller.Terminal)
+F.Global.BI.GetIDFromName("GCG_Work_Order_Detail.rpt",True,V.Local.iBI)
+F.Global.BI.PrintReport(V.Local.iBI,0,V.Local.sParam,V.Local.sParamVal,"",False)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("CallBI_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_Work_Order_Detail.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Ss_form1_unload)
+Function.Intrinsic.Control.EndIf
+
+Program.Sub.CallBI.End
+
+
